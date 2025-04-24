@@ -9,6 +9,12 @@ const getContacts = (req, res) => {
 // @routs GET /api/constcts
 // @access public
 const createContact = (req, res) => {
+    const { name, email, phone } = req.body;
+
+    if (!name || !email || !phone) {
+        res.status(400);
+        throw new Error("All filesa are mandatory");
+    }
     res.status(201).json({ message: "Create contacts" });
 };
 
